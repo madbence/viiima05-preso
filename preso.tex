@@ -1,0 +1,197 @@
+\documentclass[xetex,mathserif,serif]{beamer}
+
+\usepackage{xltxtra}
+\usepackage{xcolor}
+
+\definecolor{canv}{HTML}{E7E7E7}
+\definecolor{wh}{HTML}{253237}
+\definecolor{tit}{HTML}{253237}
+
+\setbeamercolor{background canvas}{bg=canv}
+\setbeamercolor{normal text}{fg=wh}
+\setbeamercolor{frametitle}{fg=tit}
+\setbeamercolor{title}{fg=tit}
+\setbeamercolor{itemize item}{fg=tit}
+\setbeamercolor{itemize subitem}{fg=tit}
+
+
+% \usetheme{Rochester}
+% \setmainfont{Helvetica Neue LT Pro 35 Thin}
+\setmainfont{Helvetica Neue LT Pro 45 Light}
+% \setmainfont{Helvetica Neue LT Pro 55 Roman}
+% \setmainfont{Roboto}
+\setmonofont{Iosevka Light}
+% \setbeamerfont{title}{family=\fontspec{IM FELL English PRO}}
+% \setbeamerfont{frametitle}{family=\fontspec{IM FELL English PRO}}
+\beamertemplatenavigationsymbolsempty
+
+\title{About the Docker platform}
+\author{Bence Dányi\\\vspace{1cm}\tiny{\texttt{bence@danyi.me\\github.com/madbence}}}
+
+\begin{document}
+  \frame{\titlepage}
+  \begin{frame}
+    \frametitle{Introduction to Docker}
+    \begin{itemize}
+      \item Docker engine
+      \item Docker machine
+      \item Docker compose
+      \item Docker swarm
+      \item Docker hub
+    \end{itemize}
+  \end{frame}
+  \begin{frame}
+    \frametitle{VM vs container}
+    \includegraphics[width=\textwidth]{arch.eps}
+  \end{frame}
+  \begin{frame}
+    \frametitle{VM vs container}
+    \begin{columns}
+      \begin{column}{0.5\textwidth}
+        VM
+        \begin{itemize}
+          \item Good isolation
+          \item Different OS can be simulated
+          \item Needs a lot of resources
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.5\textwidth}
+        Container
+        \begin{itemize}
+          \item Basic isolation
+          \item Shared kernel
+          \item Lightweigth \& low overhead
+        \end{itemize}
+      \end{column}
+    \end{columns}
+  \end{frame}
+  \begin{frame}
+    \frametitle{Short history}
+    \begin{itemize}
+      \item Solomon Hykes
+      \item dotCloud (PaaS) internal project
+      \item 2013: open source
+      \item 2016: 30000+ github star, 1300 contributors
+    \end{itemize}
+  \end{frame}
+  \begin{frame}
+    \frametitle{The architecture}
+    % \begin{tcolorbox}[fuzzy shadow={0mm}{-2mm}{1mm}{0.2mm}{fill=black!35!white},fuzzy halo=1mm with black!15!white]
+    % \end{tcolorbox}
+  \end{frame}
+  \begin{frame}
+    \frametitle{Docker image}
+    \begin{columns}
+      \begin{column}{0.5\textwidth}
+        \begin{itemize}
+          \item Analogy: VM snapshot
+          \item Read-only layers
+          \item Storage driver: AUFS, OverlayFS, devicemapper, etc.
+        \end{itemize}
+      \end{column}
+      \begin{column}{0.5\textwidth}
+        \includegraphics[width=0.8\textwidth]{image.eps}
+      \end{column}
+    \end{columns}
+  \end{frame}
+  \begin{frame}
+    \frametitle{Docker container}
+    \begin{itemize}
+      \item Analogy: VM
+        \begin{itemize}
+          \item Isolated from the host
+          \item But uses the same kernel (it's not virtualization!)
+          \item Linux host \& Linux container
+        \end{itemize}
+      \item Drivers
+        \begin{itemize}
+          \item LXC
+          \item libcontainer (default)
+          \item (others planned)
+        \end{itemize}
+      \item Isolation: cgroups
+      \begin{itemize}
+        \item Memory
+        \item Network
+        \item CPU
+        \item etc.
+      \end{itemize}
+    \item \texttt{\$ docker run ubuntu echo 'Hello world!'}
+    \end{itemize}
+  \end{frame}
+  \begin{frame}
+    \frametitle{Resource limits}
+    \begin{itemize}
+      \item Memory
+        \begin{itemize}
+          \item \texttt{--memory=128M}
+          \item \texttt{--memory-swap=1G}
+          \item etc.
+        \end{itemize}
+      \item CPU
+        \begin{itemize}
+          \item \texttt{--cpu-quota=10}
+          \item \texttt{--cpu-period=100}
+          \item etc.
+        \end{itemize}
+      \item IO device r/w
+        \begin{itemize}
+          \item \texttt{--device-write-bps=1mb}
+          \item etc.
+        \end{itemize}
+    \end{itemize}
+  \end{frame}
+  \begin{frame}
+    \frametitle{Interactions with containers: Network}
+    \begin{itemize}
+      \item Type
+        \begin{itemize}
+          \item Bridged
+          \item Overlay
+            \begin{itemize}
+              \item Between hosts
+              \item Layer-2 frames embedded into Layer-4 frames
+            \end{itemize}
+          \item Custom (via plugins)
+        \end{itemize}
+      \item Discover container by name: \texttt{--link name}
+      \item Expose to the host: \texttt{-p 8080:80}
+    \end{itemize}
+  \end{frame}
+  \begin{frame}
+    \frametitle{Interactions with containers: Data volumes}
+    \begin{itemize}
+      \item Declare volume in container A
+        \begin{itemize}
+          \item \texttt{\$ docker run -v /path/to/volume --name A [...]}
+        \end{itemize}
+      \item Import volumes from A in container B
+        \begin{itemize}
+          \item \texttt{\$ docker run --volumes-from A --name B [...]}
+        \end{itemize}
+      \item Mount host path inside container
+        \begin{itemize}
+          \item \texttt{\$ docker run -v /host/path/:/mount/inside/container [...]}
+        \end{itemize}
+    \end{itemize}
+  \end{frame}
+  \begin{frame}[fragile=singleslide]
+    \frametitle{Building Docker images}
+    \begin{verbatim}
+      $ docker ...
+    \end{verbatim}
+  \end{frame}
+  \begin{frame}[fragile=singleslide]
+    \frametitle{Dockerfiles}
+    \begin{itemize}
+      \item Simple commands (\texttt{ADD}, \texttt{RUN}, \texttt{CMD}, etc.)
+      \item \texttt{\$ docker build -t image-name .}
+    \end{itemize}
+    \begin{verbatim}
+      FROM debian:jessie
+      RUN apt-get update && \
+          apt-get install htop
+      CMD htop
+    \end{verbatim}
+  \end{frame}
+\end{document}

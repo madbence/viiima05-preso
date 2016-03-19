@@ -178,17 +178,20 @@
   \begin{frame}[fragile=singleslide]
     \frametitle{Building Docker images}
     \begin{verbatim}
-      $ docker ...
+      $ docker run [...]
+      $ docker commit [container]
+      [...]
+      $ docker tag [image] [name]
     \end{verbatim}
   \end{frame}
   \begin{frame}[fragile=singleslide]
     \frametitle{Dockerfiles}
     \begin{itemize}
-      \item Simple commands (\texttt{ADD}, \texttt{RUN}, \texttt{CMD}, etc.)
-      \item \texttt{\$ docker build -t image-name .}
+      \item Programmatically building images (\texttt{ADD}, \texttt{RUN}, \texttt{CMD}, etc.)
+      \item \texttt{\$ docker build -t [image-name] .}
     \end{itemize}
     \begin{verbatim}
-      FROM debian:jessie
+      FROM ubuntu
       RUN apt-get update && \
           apt-get install htop
       CMD htop

@@ -144,18 +144,19 @@
   \begin{frame}
     \frametitle{Interactions with containers: Network}
     \begin{itemize}
-      \item Type
+      \item \texttt{\$ docker network [...]}
+      \item Types:
         \begin{itemize}
           \item Bridged
-          \item Overlay
+          \item Overlay (software defined network)
             \begin{itemize}
-              \item Between hosts
-              \item Layer-2 frames embedded into Layer-4 frames
+              \item Works between hosts!
+              \item VXLAN: Layer-2 frames embedded into Layer-4 frames
             \end{itemize}
           \item Custom (via plugins)
         \end{itemize}
-      \item Discover container by name: \texttt{--link name}
-      \item Expose to the host: \texttt{-p 8080:80}
+      \item Discover container by name: \texttt{--name [name]}
+      \item Expose port on the host: \texttt{-p [host]:[guest]}
     \end{itemize}
   \end{frame}
   \begin{frame}

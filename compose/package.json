@@ -1,0 +1,7 @@
+{
+  "name": "@felho/app",
+  "version": "1.0.0",
+  "dependencies": {
+    "redis": "^2.5.3"
+  }
+}

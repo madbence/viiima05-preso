@@ -199,6 +199,36 @@
   \end{frame}
   \begin{frame}
     \frametitle{Docker Machine}
+    \begin{itemize}
+      \item Provision Docker hosts
+      \item Providers:
+        \begin{itemize}
+          \item VirtualBox
+          \item VMWare
+          \item Hyper-V
+          \item Azure
+          \item OpenStack
+          \item Digital Ocean
+          \item etc.
+        \end{itemize}
+    \end{itemize}
+  \end{frame}
+  \begin{frame}
+    \frametitle{Docker Machine}
+    \begin{itemize}
+      \item Create:
+        \begin{itemize}
+          \item \texttt{\$ docker-machine create --driver virtualbox felho}
+        \end{itemize}
+      \item Activate:
+        \begin{itemize}
+          \item \texttt{\$ docker-machine env felho}
+        \end{itemize}
+      \item Manage:
+        \begin{itemize}
+          \item \texttt{\$ docker-machine [start/stop] felho}
+        \end{itemize}
+    \end{itemize}
   \end{frame}
   \begin{frame}
     \frametitle{Docker Compose}

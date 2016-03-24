@@ -83,7 +83,7 @@
     \begin{columns}
       \begin{column}{0.5\textwidth}
         \begin{itemize}
-          \item Analogy: VM snapshot
+          \item Analogy: A VM snapshot
           \item Read-only layers
           \item Storage driver: AUFS, OverlayFS, devicemapper, etc.
         \end{itemize}
@@ -96,19 +96,18 @@
   \begin{frame}
     \frametitle{Docker container}
     \begin{itemize}
-      \item Analogy: VM
+      \item Analogy: A running VM
         \begin{itemize}
           \item Isolated from the host
           \item But uses the same kernel (it's not virtualization!)
           \item Linux host \& Linux container
         \end{itemize}
-      \item Drivers
+      \item Execution drivers:
         \begin{itemize}
           \item LXC
-          \item libcontainer (default)
-          \item (others planned)
+          \item libcontainer
         \end{itemize}
-      \item Isolation: cgroups
+      \item Isolation method: cgroups
       \begin{itemize}
         \item Memory
         \item Network
@@ -133,7 +132,7 @@
           \item \texttt{--cpu-period=100}
           \item etc.
         \end{itemize}
-      \item IO device r/w
+      \item I/O device r/w
         \begin{itemize}
           \item \texttt{--device-write-bps=1mb}
           \item etc.
@@ -171,7 +170,7 @@
         \end{itemize}
       \item Mount host path inside container
         \begin{itemize}
-          \item \texttt{\$ docker run -v /host/path/:/mount/inside/container [...]}
+          \item \texttt{\$ docker run -v [/host/path/]:[/guest/path] [...]}
         \end{itemize}
     \end{itemize}
   \end{frame}
@@ -188,7 +187,7 @@
     \frametitle{Dockerfiles}
     \begin{itemize}
       \item Programmatically building images (\texttt{ADD}, \texttt{RUN}, \texttt{CMD}, etc.)
-      \item \texttt{\$ docker build -t [image-name] .}
+      \item \texttt{\$ docker build -t [name] .}
     \end{itemize}
     \begin{verbatim}
       FROM ubuntu

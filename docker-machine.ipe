@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE ipe SYSTEM "ipe.dtd">
 <ipe version="70107" creator="Ipe 7.2.1">
-<info created="D:20160324224853" modified="D:20160324224853" tex="xetex"/>
+<info created="D:20160324224853" modified="D:20160325000543" tex="xetex"/>
 <preamble>\usepackage{xltxtra}
 \setmainfont{Helvetica Neue LT Pro 45 Light}</preamble>
 <ipestyle name="basic">
@@ -191,6 +191,7 @@ h
 <arrowsize name="large" value="10"/>
 <arrowsize name="small" value="5"/>
 <arrowsize name="tiny" value="3"/>
+<color name="black" value="0.145 0.196 0.216"/>
 <color name="red" value="1 0 0"/>
 <color name="green" value="0 1 0"/>
 <color name="blue" value="0 0 1"/>
@@ -308,7 +309,7 @@ h
 320 784 l
 h
 </path>
-<path matrix="1 0 0 1 80 -96" stroke="black" fill="white">
+<path matrix="1 0 0 1 80 -96" stroke="black">
 256 784 m
 256 752 l
 320 752 l
@@ -332,14 +333,14 @@ h
 </path>
 <path stroke="black" arrow="normal/normal">
 160 720 m
-192 784 l
-352 784 l
+188 776 l
+356 776 l
 368 752 l
 </path>
 <path stroke="black" arrow="normal/normal">
 152 720 m
-192 800 l
-424 800 l
+184 784 l
+432 784 l
 448 752 l
 </path>
 <path stroke="black" arrow="normal/normal">
@@ -361,37 +362,37 @@ h
 <path stroke="black" dash="dashed">
 252 756 m
 252 716 l
-544 716 l
-544 756 l
+512 716 l
+512 756 l
 h
 </path>
 <path stroke="black" dash="dashed">
 252 692 m
 252 652 l
-480 652 l
-480 692 l
+464 652 l
+464 692 l
 h
 </path>
 <path stroke="black" dash="dashed">
 252 628 m
 252 588 l
-416 588 l
-416 628 l
+372 588 l
+372 628 l
 h
 </path>
-<text matrix="1 0 0 1 412 32" transformations="translations" pos="128 704" stroke="black" type="label" width="24.368" height="7.122" depth="0.14" halign="right" valign="center">Azure</text>
-<text matrix="1 0 0 1 348 -32" transformations="translations" pos="128 704" stroke="black" type="label" width="57.026" height="7.265" depth="2.05" halign="right" valign="center">Digital Ocean</text>
-<text matrix="1 0 0 1 284 -96" transformations="translations" pos="128 704" stroke="black" type="label" width="43.238" height="7.122" depth="0.14" halign="right" valign="center">VirtualBox</text>
+<text matrix="1 0 0 1 380 32" transformations="translations" pos="128 704" stroke="black" type="label" width="24.368" height="7.122" depth="0.14" halign="right" valign="center">Azure</text>
+<text matrix="1 0 0 1 332 -32" transformations="translations" pos="128 704" stroke="black" type="label" width="57.026" height="7.265" depth="2.05" halign="right" valign="center">Digital Ocean</text>
+<text matrix="1 0 0 1 240 -96" transformations="translations" pos="128 704" stroke="black" type="label" width="43.238" height="7.122" depth="0.14" halign="right" valign="center">VirtualBox</text>
 <path stroke="black" dash="dash dotted">
 128 624 m
-128 576
+144 576
 192 608
-216 680
-256 720
-344 704
+208 688
+256 712
+344 708
 352 688 c
 </path>
 <text matrix="1 0 0 1 -4 -32" transformations="translations" pos="128 704" stroke="black" type="label" width="35.435" height="5.693" depth="1.64" halign="right" valign="center" size="footnote">configures</text>
-<text matrix="1 0 0 1 176 100" transformations="translations" pos="128 704" stroke="black" type="label" width="31.593" height="4.234" depth="1.64" halign="center" valign="center" size="footnote">manages</text>
+<text matrix="1 0 0 1 176 84" transformations="translations" pos="128 704" stroke="black" type="label" width="31.593" height="4.234" depth="1.64" halign="center" valign="center" size="footnote">manages</text>
 </page>
 </ipe>

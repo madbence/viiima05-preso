@@ -241,7 +241,36 @@
   \end{frame}
   \begin{frame}
     \frametitle{Docker Swarm}
+    \begin{itemize}
+      \item Clustering: a single virtual Docker from a Docker host pool
+      \item Discovery backend: maintains the list of nodes
+      \item Swarm manager: virtual Docker host
+      \item Swarm agent: advertises itself
+    \end{itemize}
+  \end{frame}
+  \begin{frame}
+    \frametitle{Docker Swarm}
     \includegraphics[width=\textwidth]{swarm}
+  \end{frame}
+  \begin{frame}
+    \frametitle{Container filters \& strategies}
+    \begin{itemize}
+      \item Stategy: general algorithm to assign containers to hosts
+        \begin{itemize}
+          \item \texttt{spread}, \texttt{binpack}, \texttt{random}, etc.
+        \end{itemize}
+      \item Filter: assign containers to hosts based on constraints:
+        \begin{itemize}
+          \item \texttt{constraint:storage==ssd}
+          \item \texttt{affinity:container==mycontainer}
+          \item \texttt{affinity:image==\textasciitilde redis}
+          \item etc.
+        \end{itemize}
+    \end{itemize}
+  \end{frame}
+  \begin{frame}
+    \frametitle{Docker Swarm example setup}
+    \includegraphics[width=\textwidth]{swarm-example}
   \end{frame}
   \begin{frame}
     \frametitle{Docker Hub}

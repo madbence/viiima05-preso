@@ -85,6 +85,7 @@
         \begin{itemize}
           \item Analogy: A VM snapshot
           \item Read-only layers
+          \item Union File System
           \item Storage driver: AUFS, OverlayFS, devicemapper, etc.
         \end{itemize}
       \end{column}
@@ -109,10 +110,9 @@
         \end{itemize}
       \item Isolation method: cgroups
       \begin{itemize}
-        \item Memory
-        \item Network
-        \item CPU
-        \item etc.
+        \item Namespace isolation (PID, mount, net, ipc)
+        \item Resource limiting (memory, swap)
+        \item Prioritizaion (CPU, I/O)
       \end{itemize}
     \item \texttt{\$ docker run ubuntu echo 'Hello world!'}
     \end{itemize}
